@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080e19"><title>Rasson Smart Attendance</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head><body><main class="shell">
+<header class="topbar"><div><p class="eyebrow">RASSON SMART ATTENDANCE</p><h1>Admin Console</h1></div><button id="signOutBtn" class="btn ghost hidden">Sign out</button></header>
+<div id="setupNotice" class="notice hidden"><b>Setup required:</b> Add Supabase Project URL and anon/publishable key in <code>config.js</code>.</div>
+<section id="loginPanel" class="panel login"><div class="heading"><span class="icon">🔐</span><div><h2>Admin sign in</h2><p>Authorized administrators only</p></div></div>
+<form id="loginForm" class="form"><label>Email<input id="loginEmail" type="email" autocomplete="username" required></label><label>Password<input id="loginPassword" type="password" autocomplete="current-password" required></label><button class="btn primary">Sign in</button><p id="loginMessage" class="message"></p></form></section>
+<section id="appPanel" class="hidden"><div class="welcome"><div><p class="eyebrow">CONTROL CENTER</p><h2>Overview</h2></div><span id="adminEmail" class="chip"></span></div>
+<div class="stats"><article class="stat"><span>Branches</span><strong id="branchCount">0</strong></article><article class="stat"><span>Employees</span><strong id="employeeCount">0</strong></article><article class="stat"><span>Active employees</span><strong id="activeCount">0</strong></article></div>
+<div class="columns"><section class="panel"><p class="eyebrow">LOCATIONS</p><h2>Branches</h2><form id="branchForm" class="branch-form"><input id="branchName" required maxlength="80" placeholder="Branch name"><input id="branchCode" required maxlength="20" placeholder="Code e.g. RAS-01"><button class="btn primary">Add branch</button></form><p id="branchMessage" class="message"></p><div class="table-scroll"><table><thead><tr><th>Branch</th><th>Code</th><th>Status</th></tr></thead><tbody id="branchRows"><tr><td colspan="3">No branches loaded.</td></tr></tbody></table></div></section>
+<section class="panel"><p class="eyebrow">PEOPLE</p><h2>Employees</h2><form id="employeeForm" class="employee-form"><label>Employee ID<input id="employeeCode" required maxlength="30" placeholder="RASS-001"></label><label>Full name<input id="employeeName" required maxlength="120"></label><label>Mobile number<input id="employeePhone" required maxlength="20" placeholder="+923001234567"></label><label>Branch<select id="employeeBranch" required><option value="">Add a branch first</option></select></label><label class="check"><input id="employeeActive" type="checkbox" checked> Active employee</label><button class="btn primary">Add employee</button></form><p id="employeeMessage" class="message"></p><div class="table-scroll"><table><thead><tr><th>ID</th><th>Employee</th><th>Branch</th><th>Status</th></tr></thead><tbody id="employeeRows"><tr><td colspan="4">No employees loaded.</td></tr></tbody></table></div></section></div>
+<p class="footnote">Phase 1 foundation only. OTP enrollment, face verification, mobile camera attendance and shift-based check-in/out are later phases.</p></section>
+</main><script src="config.js"></script><script src="app.js"></script></body></html>
