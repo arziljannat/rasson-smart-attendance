@@ -89,5 +89,11 @@ drop policy if exists "Admins manage employees" on public.employees;
 create policy "Admins manage employees" on public.employees for all to authenticated
 using(public.is_admin()) with check(public.is_admin());
 
+-- Explicit SQL privileges required by PostgREST; RLS policies still decide which rows are accessible.
+grant usage on schema public to authenticated;
+grant select on public.profiles to authenticated;
+grant select, insert, update, delete on public.branches, public.shifts, public.employees to authenticated;
+grant execute on function public.is_admin() to authenticated;
+
 -- After creating the first user in Supabase Auth, promote it:
 -- update public.profiles set role='admin' where email='YOUR_ADMIN_EMAIL';
